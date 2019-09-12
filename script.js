@@ -5,7 +5,6 @@ let option = document.querySelector("option");
 let harmony = "analogous";
 
 
-
 initColors();
 
 function initColors() {
@@ -113,16 +112,7 @@ function initColors() {
             boxes[x].firstElementChild.lastElementChild.innerHTML = `HSL: ${h},${s}%,${l}%`;
             let rgb = boxes[x].style.backgroundColor;
 
-            if (l < 31) {
-                console.log("works");
-                boxes[x].firstElementChild.children[1].style.color = "#ffffff";
-                boxes[x].firstElementChild.children[0].style.color = "#ffffff";
-                boxes[x].firstElementChild.lastElementChild.style.color = "#ffffff";
-            } else {
-                boxes[x].firstElementChild.children[1].style.color = "#000000";
-                boxes[x].firstElementChild.children[0].style.color = "#000000";
-                boxes[x].firstElementChild.lastElementChild.style.color = "#000000";
-            }
+            changeTextColor();
 
             function getRGB(rgb) {
                 let sep = rgb.indexOf(", ") > -1 ? ", " : " ";
@@ -148,6 +138,18 @@ function initColors() {
             boxes[x].firstElementChild.children[1].innerHTML = "RGB: " + getRGB(rgb);
             boxes[x].firstElementChild.children[0].innerHTML = "HEX: " + RGBtoHex(getRGB(rgb));
             x++;
+
+            function changeTextColor() {
+                if (l < 31) {
+                    boxes[x].firstElementChild.children[1].style.color = "#ffffff";
+                    boxes[x].firstElementChild.children[0].style.color = "#ffffff";
+                    boxes[x].firstElementChild.lastElementChild.style.color = "#ffffff";
+                } else {
+                    boxes[x].firstElementChild.children[1].style.color = "#000000";
+                    boxes[x].firstElementChild.children[0].style.color = "#000000";
+                    boxes[x].firstElementChild.lastElementChild.style.color = "#000000";
+                }
+            }
         }
     }
 }
