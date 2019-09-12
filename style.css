@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap');
+
+
+body {
+    margin: 0;
+    padding: 0;
+    background: lightblue;
+    height: 100vh;
+    width: 100vw;
+}
+
+.box {
+    height: 100vh;
+    width: 20%;
+    float: left;
+}
+
+#selectors-box {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    width: 420px;
+    margin: auto;
+    padding: 1em;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 60px 40px;
+    background: #f7f7f7;
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.title {
+    grid-column: 1/3;
+    text-align: center;
+}
+
+
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.color-values {
+    text-align: center;
+    margin-top: 2em;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+li {
+    list-style: none;
+    margin-bottom: 1em;
+}
+
+
+h1 {
+    font-size: 2.5em;
+    margin: 0;
+    font-family: 'roboto';
+}
+
+p {
+    font-size: 1.1em;
+    font-family: 'roboto';
+    padding: 1em 0;
+    margin: 0;
+}
+
+h2 {
+    margin: 1em;
+    font-size: 1em;
+    font-weight: 400;
+
+}
+
+select {
+    margin: 1em 0 0;
+    width: 110px;
+    padding: 5px 35px 5px 5px;
+    font-size: 13px;
+    border: 1px solid #CCC;
+    height: 34px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url(https://image.flaticon.com/icons/svg/118/118738.svg) 96% / 10% no-repeat #EEE;
+}
+
+input[type="color"] {
+    -webkit-appearance: none;
+    border: none;
+    width: 32px;
+    height: 32px;
+    margin-top: 1em;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+    border: none;
+}
