@@ -1,8 +1,9 @@
 let input = document.querySelector("#picker");
-const container = document.querySelectorAll(".box");
+const boxes = document.querySelectorAll(".box");
 const select = document.querySelector("select");
 let option = document.querySelector("option");
 let harmony = "analogous";
+
 
 
 initColors();
@@ -69,10 +70,12 @@ function initColors() {
     }
 
 
+
     select.onchange = function () {
         harmony = select.value;
         HEXtoRGB(input.value);
     }
+
 
     function calcHarmony(h, s, l) {
         hBase = h;
@@ -82,7 +85,7 @@ function initColors() {
 
         for (i = -2; i < 3; i++) {
             if (harmony == "analogous") {
-                h = hBase + (20 * i);
+                h = hBase + (10 * i);
             }
             if (harmony == "monochromatic") {
                 l = (lBase + 15 * i).toFixed(1);
@@ -105,12 +108,23 @@ function initColors() {
                 s = (lBase + 20 * i).toFixed(1);
             }
 
-            container[x].style.backgroundColor = `hsl(${h},${s}%,${l}%)`;
-            container[2].style.backgroundColor = `hsl(${hBase},${sBase}%,${lBase}%)`;
-            container[x].firstElementChild.lastElementChild.innerHTML = `HSL: ${h},${s}%,${l}%`;
-            let rgb = container[x].style.backgroundColor;
+            boxes[x].style.backgroundColor = `hsl(${h},${s}%,${l}%)`;
+            boxes[2].style.backgroundColor = `hsl(${hBase},${sBase}%,${lBase}%)`;
+            boxes[x].firstElementChild.lastElementChild.innerHTML = `HSL: ${h},${s}%,${l}%`;
+            let rgb = boxes[x].style.backgroundColor;
 
-            function setRGB(rgb) {
+            if (l < 31) {
+                console.log("works");
+                boxes[x].firstElementChild.children[1].style.color = "#ffffff";
+                boxes[x].firstElementChild.children[0].style.color = "#ffffff";
+                boxes[x].firstElementChild.lastElementChild.style.color = "#ffffff";
+            } else {
+                boxes[x].firstElementChild.children[1].style.color = "#000000";
+                boxes[x].firstElementChild.children[0].style.color = "#000000";
+                boxes[x].firstElementChild.lastElementChild.style.color = "#000000";
+            }
+
+            function getRGB(rgb) {
                 let sep = rgb.indexOf(", ") > -1 ? ", " : " ";
                 rgb = rgb.substr(4).split(")")[0].split(sep);
                 return rgb;
@@ -131,8 +145,8 @@ function initColors() {
                 return "#" + r + g + b;
             }
 
-            container[x].firstElementChild.children[1].innerHTML = "RGB: " + setRGB(rgb);
-            container[x].firstElementChild.children[0].innerHTML = "HEX: " + RGBtoHex(setRGB(rgb));
+            boxes[x].firstElementChild.children[1].innerHTML = "RGB: " + getRGB(rgb);
+            boxes[x].firstElementChild.children[0].innerHTML = "HEX: " + RGBtoHex(getRGB(rgb));
             x++;
         }
     }
